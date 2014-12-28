@@ -1,6 +1,4 @@
-====================================================
-=                    mysqlexp                      =
-====================================================
-=  mysqlexp is MySQL Editor for try it yourself.   =
-====================================================
-Supanut Dokmaithong.
+mysqlexp
+========
+mysqlexp is MySQL Editor for try it yourself.
+
