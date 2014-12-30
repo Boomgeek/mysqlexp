@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/mysqlexp/db" VERSION="20101203" COMMENT="XMLDB file for Moodle mod/mysqlexp"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+  	<TABLE NAME="mysqlexp" COMMENT="mysqlexp table is default table.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="course"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" COMMENT="Course mysqlexp activity belongs to" PREVIOUS="id" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="name field for moodle instances" PREVIOUS="course" NEXT="intro"/>
+        <FIELD NAME="intro" TYPE="text" LENGTH="big" NOTNULL="false" SEQUENCE="false" COMMENT="General introduction of the mysqlexp activity" PREVIOUS="name" NEXT="introformat"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Format of the intro field (MOODLE, HTML, MARKDOWN...)" PREVIOUS="intro" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="introformat" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="mysqlexp_log" COMMENT="mysqlexp_log table is log for record query of student.">
+      <FIELDS>
+      	<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="sid"/>
+        <FIELD NAME="sid" TYPE="char" LENGTH="8" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="unit"/>
+        <FIELD NAME="unit" TYPE="int" LENGTH="2" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="sid" NEXT="query"/>
+        <FIELD NAME="query" TYPE="char" LENGTH="500" NOTNULL="true" SEQUENCE="false" PREVIOUS="unit" NEXT="timestamp"/>
+        <FIELD NAME="timestamp" TYPE="datetime"  NOTNULL="true" UNSIGNED="true" DEFAULT="CURRENT_TIMESTAMP" SEQUENCE="false" PREVIOUS="query"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="sid" UNIQUE="false" FIELDS="sid"/>
+      </INDEXES>
+    </TABLE>
+
+    <TABLE NAME="mysqlexp_userdb" COMMENT="mysqlexp_userdb table is record database-experiment of user.">
+      <FIELDS>
+        <FIELD NAME="sid" TYPE="char" LENGTH="8" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" NEXT="countrestore"/>
+        <FIELD NAME="countrestore" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="sid" NEXT="timestamp"/>
+        <FIELD NAME="timestamp" TYPE="datetime"  NOTNULL="true" UNSIGNED="true" DEFAULT="CURRENT_TIMESTAMP" SEQUENCE="false" PREVIOUS="countrestore"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="sid"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="sid" UNIQUE="false" FIELDS="sid"/>
+      </INDEXES>
+    </TABLE>
+
+  </TABLES>
+</XMLDB>
