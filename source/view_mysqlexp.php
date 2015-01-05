@@ -7,7 +7,7 @@ if(empty($USER->username)){
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Mysqlexp Editor v1.0</title>
 	<meta charset="utf-8">
@@ -20,7 +20,8 @@ if(empty($USER->username)){
 <body>
 	<div class="container-fluid">
   		<div class="row">
-  			<div class="col-md-12"><h1>MySQLexp Editor v1.0</h1></div>
+  			<div class="col-md-10"><h1>MySQLexp Editor v1.0</h1></div>
+        <div class="col-md-2 text-right restore-btn"><button type="button" id="restoredb" class="btn btn-danger glyphicon glyphicon-list"> RestoreDB</button></div>
 		</div>
 		<div class="row">
   			<div class="col-md-12">
@@ -46,9 +47,8 @@ if(empty($USER->username)){
 		</div>
 		<div class="row">
   			<div class="col-md-6 ">
-  				<button type="button" id="restoredb" class="btn btn-primary glyphicon glyphicon-tasks"> RestoreDB</button>
   				<button type="button" id="submitcode" class="btn btn-success glyphicon glyphicon-send"> Submit</button>
-  				<button type="button" class="btn btn-danger glyphicon glyphicon-refresh"> Reset</button>
+  				<button type="button" class="btn btn-primary glyphicon glyphicon-refresh"> Refresh</button>
   			</div>	
 		</div>
 	</div>
