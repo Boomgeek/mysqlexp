@@ -18,6 +18,7 @@ $(document).ready(function(){					//wait for load DOM
 
 	$('#submitcode').click(function(){
 		sendcode();
+		sendlog();
 	});
 
 //End Event Listener zone
@@ -59,6 +60,15 @@ function sendcode()
 					$("#result").html(result);
 				}
     		}
+    	});
+}
+
+function sendlog()
+{
+	$.ajax({
+			url:"./source/php/test_log.php",
+			type: "POST",
+			data: "code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val()
     	});
 }
 
