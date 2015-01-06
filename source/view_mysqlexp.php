@@ -4,8 +4,42 @@ if(empty($USER->username)){
 	header( "refresh: 0; url=../../login/index.php" );		//redirect to http://localhost/moodle/login/index.php
 	exit(0);
 }
-
+//check unit
+$unit = $_REQUEST["unit"];
+if(empty($unit)){
+  echo "Error: unit was empty.";
+  exit(0);
+}
+//check article
+$article = $_REQUEST["article"];
+if(empty($article)){
+  echo "Error: article was empty.";
+  exit(0);
+}
+//check type
+$type = $_REQUEST["type"];
+if(empty($type)){
+  echo "Error: type was empty.";
+  exit(0);
+}
+else
+{
+  if($type == 1)
+  {
+    $type = "while_exp";
+  }
+  else if($type == 2)
+  {
+    $type = "after_exp";
+  }
+  else
+  {
+    echo "Error: type is wrong. Only type is 1(while_exp) or 2(after_exp)";
+    exit(0);
+  }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,6 +86,11 @@ if(empty($USER->username)){
   			</div>	
 		</div>
 	</div>
+  <details hidden>
+    <input type="hidden" id="unit" value="<?php echo $unit; ?>">
+    <input type="hidden" id="article" value="<?php echo $article; ?>">
+    <input type="hidden" id="type" value="<?php echo $type; ?>">
+  </details>
 </body>
 
 <footer>
