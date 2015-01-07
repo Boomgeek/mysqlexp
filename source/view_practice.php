@@ -59,24 +59,22 @@ else
 	<div class="container bs-docs-container">
 		<div class="row">
  			<div class="col-md-12" role="main">
-				<div class="bs-docs-section">
-					<h1 id="glyphicons" class="page-header">
-						<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> 
-						ส่งคำตอบ <?php if($type=="while_exp"){echo "ระหว่างการทดลอง";} else {echo "หลังการทดลอง";} ?> บทที่ <?php echo $unit; ?>
-					</h1>
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								<?php echo "ข้อที่".$article." ".$question ?>
-							</h3>
-						</div>
-						<div class="panel-body">
-							<textarea class="form-control" rows="3"></textarea>
-							<div class="row">
-								<div class="col-md-12 text-right">
-									<br>
-									<button type="button" class="btn btn-success">ส่งคำตอบ</button>
-								</div>
+				<h1 id="glyphicons" class="page-header">
+					<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> 
+					ส่งคำตอบ <?php if($type=="while_exp"){echo "ระหว่างการทดลอง";} else {echo "หลังการทดลอง";} ?> บทที่ <?php echo $unit; ?>
+				</h1>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<?php echo "ข้อที่".$article." ".$question ?>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<textarea id="answer" class="form-control" rows="10"></textarea>
+						<div class="row">
+							<div class="col-md-12 text-right">
+								<br>
+								<button type="button" id="submit" class="btn btn-success">ส่งคำตอบ</button>
 							</div>
 						</div>
 					</div>
@@ -84,5 +82,16 @@ else
 			</div>	
 		</div>
 	</div>
+	<details hidden>
+		<input type="hidden" id="question" value="<?php echo $question; ?>">
+    	<input type="hidden" id="unit" value="<?php echo $unit; ?>">
+    	<input type="hidden" id="article" value="<?php echo $article; ?>">
+    	<input type="hidden" id="type" value="<?php echo $type; ?>">
+  	</details>
 </body>
+<footer>
+	<script type="text/javascript" src="./source/js/jquery-2.1.1.min.js"></script>
+ 	<script type="text/javascript" src="./source/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./source/js/practice.js"></script>
+</footer>
 </html>
