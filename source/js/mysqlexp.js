@@ -65,6 +65,7 @@ function sendcode()
 
 function sendlog()
 {
+	alert("code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val());
 	$.ajax({
 			url:"./source/php/test_log.php",
 			type: "POST",

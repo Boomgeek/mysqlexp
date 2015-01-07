@@ -92,10 +92,9 @@ else
     <input type="hidden" id="type" value="<?php echo $type; ?>">
   </details>
 </body>
-
 <footer>
 	<script type="text/javascript" src="./source/js/jquery-2.1.1.min.js"></script>
  	<script type="text/javascript" src="./source/js/bootstrap.min.js"></script>
- 	<script type="text/javascript" src="./source/js/script.js"></script>
+ 	<script type="text/javascript" src="./source/js/mysqlexp.js"></script>
 </footer>
 </html>
