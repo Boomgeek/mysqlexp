@@ -66,7 +66,7 @@ else
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							<?php echo "ข้อที่".$article." ".$question ?>
+							<?php echo "<b>ข้อที่".$article."</b>"." ".$question ?>
 						</h3>
 					</div>
 					<div class="panel-body">
