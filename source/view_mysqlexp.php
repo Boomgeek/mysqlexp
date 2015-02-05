@@ -24,15 +24,7 @@ if(empty($type)){
 }
 else
 {
-  if($type == 1)
-  {
-    $type = "while_exp";
-  }
-  else if($type == 2)
-  {
-    $type = "after_exp";
-  }
-  else
+  if(($type != 1) && ($type != 2))
   {
     echo "Error: type is wrong. Only type is 1(while_exp) or 2(after_exp)";
     exit(0);
