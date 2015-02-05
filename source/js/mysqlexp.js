@@ -65,11 +65,15 @@ function sendcode()
 
 function sendlog()
 {
-	alert("code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val());
+	//alert("mode=log&code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val());
 	$.ajax({
-			url:"./source/php/test_log.php",
+			url:"../mysqlreport/service.php",
 			type: "POST",
-			data: "code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val()
+			data: "mode=log&code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val(),
+			success:function(result)
+			{
+				alert(result);
+			}
     	});
 }
 
