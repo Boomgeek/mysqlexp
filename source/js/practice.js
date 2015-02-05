@@ -10,11 +10,15 @@ $(document).ready(function(){					//wait for load DOM
 //Start function zone
 function sendPractice()
 {
-	alert("unit="+$("#unit").val()+"&article="+$("#article").val()+"&type="+$("#type").val()+"&answer="+$("#answer").val());
+	//alert("mode=answer&unit="+$("#unit").val()+"&article="+$("#article").val()+"&type="+$("#type").val()+"&answer="+$("#answer").val());
 	$.ajax({
-			url: "this/link.php",
+			url: "../mysqlreport/service.php",
 			type: "POST",
-			data: "unit="+$("#unit").val()+"&article="+$("#article").val()+"&type="+$("#type").val()+"&answer="+$("#answer").val()
+			data: "mode=answer&unit="+$("#unit").val()+"&article="+$("#article").val()+"&type="+$("#type").val()+"&answer="+$("#answer").val(),
+			success:function(result)
+			{
+				alert(result);
+			}
 	});
 }
 
