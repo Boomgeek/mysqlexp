@@ -53,7 +53,7 @@ else
  			<div class="col-md-12" role="main">
 				<h1 id="glyphicons" class="page-header">
 					<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> 
-					ส่งคำตอบ <?php if($type=="while_exp"){echo "ระหว่างการทดลอง";} else {echo "หลังการทดลอง";} ?> บทที่ <?php echo $unit; ?>
+					ส่งคำตอบ <?php if($type==1){echo "ระหว่างการทดลอง";} else {echo "หลังการทดลอง";} ?> บทที่ <?php echo $unit; ?>
 				</h1>
 				<div class="panel panel-primary">
 					<div class="panel-heading">
