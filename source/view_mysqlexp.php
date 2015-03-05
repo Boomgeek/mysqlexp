@@ -59,7 +59,10 @@ else
   				<div class="panel panel-default">
   					<div class="panel-heading"><h4>Code</h4></div>
   					<div class="panel-body">
-  						<textarea autocomplete="off" class="form-control" id="textareaCode" wrap="logical" rows="20" cols="100%"></textarea>
+              <div class="text-right">
+                <button class="btn-clipboard" id="copy-button" data-clipboard-target="textareaCode" title="Click to copy me.">Copy</button>
+              </div>
+  						<textarea autocomplete="off" class="form-control" id="textareaCode" wrap="logical" rows="18" cols="100%"></textarea>
   					</div>
   				</div>
  			</div>
@@ -87,6 +90,7 @@ else
 <footer>
 	<script type="text/javascript" src="./source/js/jquery-2.1.1.min.js"></script>
  	<script type="text/javascript" src="./source/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./source/js/zeroclipboard/dist/ZeroClipboard.min.js"></script>
  	<script type="text/javascript" src="./source/js/mysqlexp.js"></script>
 </footer>
 </html>
