@@ -20,6 +20,9 @@ $(document).ready(function(){					//wait for load DOM
 		sendcode();
 		sendlog();
 	});
+	$('#refreshBtn').click(function() {
+		location.reload();
+	});
 
 //End Event Listener zone
 });
@@ -72,7 +75,7 @@ function sendlog()
 			data: "mode=log&code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val(),
 			success:function(result)
 			{
-				alert(result);
+				//alert(result);
 			}
     	});
 }

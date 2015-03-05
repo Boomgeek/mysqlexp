@@ -73,7 +73,7 @@ else
 		</div>
 		<div class="row">
   			<div class="col-md-6 ">
-  				<button type="button" class="btn btn-primary glyphicon glyphicon-refresh"> Refresh</button>
+  				<button type="button" id="refreshBtn" class="btn btn-primary glyphicon glyphicon-refresh"> Refresh</button>
           <button type="button" id="submitcode" class="btn btn-success glyphicon glyphicon-send"> Submit</button>
   			</div>	
 		</div>
