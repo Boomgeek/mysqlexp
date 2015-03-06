@@ -1,6 +1,7 @@
 .btn-clipboard {
 position: absolute;
-right: 3em;
+top: 61px;
+right: 32px;
 z-index: 10;
 display: block;
 padding: 5px 8px;
@@ -12,7 +13,7 @@ border: 1px solid #e1e1e8;
 border-radius: 0 4px 0 4px;
 }
 
-.btn-clipboard-hover{
+.zeroclipboard-is-hover{
   color: #fff;
   background-color: #563d7c;
   border-color: #563d7c;
@@ -20,6 +21,8 @@ border-radius: 0 4px 0 4px;
 
 textarea {
 	resize:none;
+  position: relative;
+  top: 1em;
 }
 .panel {
   height : 36em;

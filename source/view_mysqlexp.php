@@ -60,9 +60,9 @@ else
   					<div class="panel-heading"><h4>Code</h4></div>
   					<div class="panel-body">
               <div class="text-right">
-                <button class="btn-clipboard" id="copy-button" data-clipboard-target="textareaCode" title="Click to copy me.">Copy</button>
+                <span class="btn-clipboard" id="copy-button" data-clipboard-target="textareaCode" data-toggle="tooltip" data-placement="left" title="Copy to clipboard">Copy</span>
               </div>
-  						<textarea autocomplete="off" class="form-control" id="textareaCode" wrap="logical" rows="18" cols="100%"></textarea>
+  						<textarea autocomplete="off" class="form-control" id="textareaCode" wrap="logical" rows="19" cols="100%"></textarea>
   					</div>
   				</div>
  			</div>
