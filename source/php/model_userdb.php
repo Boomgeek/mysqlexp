@@ -54,7 +54,7 @@
 			$db1 = $this->dbName;							//for insert update delete select
 			$db2 = $this->dbName."_test";					//for create delete
 
-			$createDB ="CREATE DATABASE ".$db1;
+			$createDB ="CREATE DATABASE ".$db1." CHARACTER SET utf8 COLLATE utf8_unicode_ci";
 			$createUser ="CREATE USER '".$this->studentID."'@'localhost' IDENTIFIED BY '".$pwn."';";
 			$setPermission1 ="GRANT USAGE ON *.* TO '".$this->studentID."'@'localhost' IDENTIFIED BY '".$pwn."' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;";
 			$setPermission2 = "GRANT ALL PRIVILEGES ON `".$db1."`.* TO '".$this->studentID."'@'localhost';";

@@ -83,7 +83,7 @@
 
 		function checkWordlist($code)
 		{
-			$WORDLIST = array("use","insert","update","delete","create","drop","alter");
+			$WORDLIST = array("use","insert","update","delete","create","drop","alter","rename");
 			
 			$word = $this->organizeCode($code);
 
@@ -145,6 +145,13 @@
 			{
 				$tablename=$word[2];
 				echo "Success: Alter table to ".$tablename." successful.";
+				return ture;
+			}
+			else if($word[0] == $WORDLIST[7])
+			{
+				$newTablename=$word[4];
+				$oldTablename=$word[2];
+				echo "Success: Rename table ".$oldTablename." to ".$newTablename." successful.";
 				return ture;
 			}
 			else

@@ -4,8 +4,34 @@ if(empty($USER->username)){
 	header( "refresh: 0; url=../../login/index.php" );		//redirect to http://localhost/moodle/login/index.php
 	exit(0);
 }
-
+//check unit
+$unit = $_REQUEST["unit"];
+if(empty($unit)){
+  echo "Error: unit was empty.";
+  exit(0);
+}
+//check article
+$article = $_REQUEST["article"];
+if(empty($article)){
+  echo "Error: article was empty.";
+  exit(0);
+}
+//check type
+$type = $_REQUEST["type"];
+if(empty($type)){
+  echo "Error: type was empty.";
+  exit(0);
+}
+else
+{
+  if(($type != 1) && ($type != 2))
+  {
+    echo "Error: type is wrong. Only type is 1(while_exp) or 2(after_exp)";
+    exit(0);
+  }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +59,10 @@ if(empty($USER->username)){
   				<div class="panel panel-default">
   					<div class="panel-heading"><h4>Code</h4></div>
   					<div class="panel-body">
-  						<textarea autocomplete="off" class="form-control" id="textareaCode" wrap="logical" rows="20" cols="100%"></textarea>
+              <div class="text-right">
+                <span class="btn-clipboard" id="copy-button" data-clipboard-target="textareaCode" data-toggle="tooltip" data-placement="left" title="Copy to clipboard">Copy</span>
+              </div>
+  						<textarea autocomplete="off" class="form-control" id="textareaCode" wrap="logical" rows="19" cols="100%"></textarea>
   					</div>
   				</div>
  			</div>
@@ -47,16 +76,21 @@ if(empty($USER->username)){
 		</div>
 		<div class="row">
   			<div class="col-md-6 ">
-  				<button type="button" class="btn btn-primary glyphicon glyphicon-refresh"> Refresh</button>
+  				<button type="button" id="refreshBtn" class="btn btn-primary glyphicon glyphicon-refresh"> Refresh</button>
           <button type="button" id="submitcode" class="btn btn-success glyphicon glyphicon-send"> Submit</button>
   			</div>	
 		</div>
 	</div>
+  <details hidden>
+    <input type="hidden" id="unit" value="<?php echo $unit; ?>">
+    <input type="hidden" id="article" value="<?php echo $article; ?>">
+    <input type="hidden" id="type" value="<?php echo $type; ?>">
+  </details>
 </body>
-
 <footer>
 	<script type="text/javascript" src="./source/js/jquery-2.1.1.min.js"></script>
  	<script type="text/javascript" src="./source/js/bootstrap.min.js"></script>
- 	<script type="text/javascript" src="./source/js/script.js"></script>
+  <script type="text/javascript" src="./source/js/zeroclipboard/dist/ZeroClipboard.min.js"></script>
+ 	<script type="text/javascript" src="./source/js/mysqlexp.js"></script>
 </footer>
 </html>

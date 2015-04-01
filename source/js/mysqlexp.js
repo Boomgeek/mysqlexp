@@ -18,6 +18,17 @@ $(document).ready(function(){					//wait for load DOM
 
 	$('#submitcode').click(function(){
 		sendcode();
+		sendlog();
+	});
+	$('#refreshBtn').click(function() {
+		location.reload();
+	});
+
+	//create ZeroClipboard for copy and mousehover
+	var client = new ZeroClipboard( document.getElementById("copy-button") );
+	//mouse hover is show tooltip
+	$(function () {
+  		$('[data-toggle="tooltip"]').tooltip();
 	});
 
 //End Event Listener zone
@@ -59,6 +70,20 @@ function sendcode()
 					$("#result").html(result);
 				}
     		}
+    	});
+}
+
+function sendlog()
+{
+	//alert("mode=log&code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val());
+	$.ajax({
+			url:"../mysqlreport/service.php",
+			type: "POST",
+			data: "mode=log&code="+$('#textareaCode').val()+"&unit="+$('#unit').val()+"&article="+$('#article').val()+"&type="+$('#type').val(),
+			success:function(result)
+			{
+				//alert(result);
+			}
     	});
 }
 
