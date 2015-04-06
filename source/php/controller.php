@@ -15,8 +15,12 @@ if(empty($mode)){
 
 if($mode == "checkdb")
 {
+	include("./model_getJsonConnection.php");
 	include("./model_userdb.php");
-	$udb = new userDB('localhost','root','1234',$USER->username);
+
+	$gjc = new getJsonConnection();
+	$c = $gjc->getConnection("../connection.json");
+	$udb = new userDB($c['host'],$c['user'],$c['pass'],$USER->username);
 
 	if($udb->getSidRow() == 0)		//if mdl_mysqlexp_userdb table not have sid 
 	{
@@ -35,8 +39,12 @@ if($mode == "checkdb")
 if($mode == "restoredb")
 {
 	//restore database
+	include("./model_getJsonConnection.php");
 	include("./model_userdb.php");
-	$udb = new userDB('localhost','root','1234',$USER->username);
+
+	$gjc = new getJsonConnection();
+	$c = $gjc->getConnection("../connection.json");
+	$udb = new userDB($c['host'],$c['user'],$c['pass'],$USER->username);
 	$udb->connect();								
 	$udb->dropDB();									
 	$udb->createUserDB();							

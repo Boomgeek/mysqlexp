@@ -1,0 +1,9 @@
+{
+	"connection":
+	{
+		"host": "localhost",
+    	"user": "root",
+    	"pass": "1234",
+    	"dbname": "moodle"
+	}
+}
