@@ -22,22 +22,6 @@
       </INDEXES>
     </TABLE>
 
-    <TABLE NAME="mysqlexp_log" COMMENT="mysqlexp_log table is log for record query of student.">
-      <FIELDS>
-      	<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="sid"/>
-        <FIELD NAME="sid" TYPE="char" LENGTH="8" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="id" NEXT="unit"/>
-        <FIELD NAME="unit" TYPE="int" LENGTH="2" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="sid" NEXT="query"/>
-        <FIELD NAME="query" TYPE="char" LENGTH="500" NOTNULL="true" SEQUENCE="false" PREVIOUS="unit" NEXT="timestamp"/>
-        <FIELD NAME="timestamp" TYPE="datetime"  NOTNULL="true" UNSIGNED="true" DEFAULT="CURRENT_TIMESTAMP" SEQUENCE="false" PREVIOUS="query"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-      </KEYS>
-      <INDEXES>
-        <INDEX NAME="sid" UNIQUE="false" FIELDS="sid"/>
-      </INDEXES>
-    </TABLE>
-
     <TABLE NAME="mysqlexp_userdb" COMMENT="mysqlexp_userdb table is record database-experiment of user.">
       <FIELDS>
         <FIELD NAME="sid" TYPE="char" LENGTH="8" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" NEXT="countrestore"/>
