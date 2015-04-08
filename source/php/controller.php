@@ -15,34 +15,40 @@ if(empty($mode)){
 
 if($mode == "checkdb")
 {
+	include("./connection.php");
 	include("./model_userdb.php");
-	$udb = new userDB('localhost','root','1234',$USER->username);
+
+	$con = connection();
+	$conInfo = getConInfo();
+	$dbname = $conInfo['dbname'];
+	$udb = new userDB($con,$USER->username,$dbname);
 
 	if($udb->getSidRow() == 0)		//if mdl_mysqlexp_userdb table not have sid 
 	{
-		//create database and user
-		$udb->connect();																
+		//create database and user																
 		$udb->createUserDB();							
-		$udb->createTables();							
+		$udb->createTables();						
 		$udb->insertTables();							
-		$udb->disConnect();
-
 		//insert sid to mdl_mysqlexp_userdb table
-		$udb->insertSidToUserdb();							
+		$udb->insertSidToUserdb();
+
 	}
 }
 
 if($mode == "restoredb")
 {
 	//restore database
+	include("./connection.php");
 	include("./model_userdb.php");
-	$udb = new userDB('localhost','root','1234',$USER->username);
-	$udb->connect();								
+
+	$con = connection();
+	$conInfo = getConInfo();
+	$dbname = $conInfo['dbname'];
+	$udb = new userDB($con,$USER->username,$dbname);							
 	$udb->dropDB();									
 	$udb->createUserDB();							
 	$udb->createTables();							
-	$udb->insertTables();							
-	$udb->disConnect();								
+	$udb->insertTables();															
 
 	//increment countRestore ;
 	$udb->updateCountrestore();
@@ -56,7 +62,12 @@ if($mode == "sendcode")
 		exit(0);
 	}
 	include("./model_sqlquery.php");
-	$query = new userQuery('localhost',$USER->username,'pwn_'.$USER->username,$code);
+	include("./connection.php");
+
+	$conInfo = getConInfo();
+	$host = $conInfo['host'];
+
+	$query = new userQuery($host,$USER->username,'pwn_'.$USER->username,$code);
 	$query->connect();
 	$query->selectDB();
 	$query->mysqlQuery();

@@ -2,32 +2,14 @@
 
 	class userDB
 	{
-		var $host,$user,$pass,$con,$dbName,$studentID;
+		var $con,$dbName,$studentID,$mainDB;
 
-		function __construct($host,$user,$pass,$studentID)
+		function __construct($con,$studentID,$mainDB)
 		{
-			$this->host = $host;
-			$this->user = $user;
-			$this->pass = $pass;
+			$this->con = $con;
 			$this->studentID = $studentID;
 			$this->dbName = "ex_".$studentID;
-		}
-
-		function connect()
-		{
-			$this->con = mysqli_connect($this->host,$this->user,$this->pass);
-
-			// Check connection
-			if (mysqli_connect_errno())
-			{
-				printf("Connect failed: %s", mysqli_connect_error());
-    			exit();
-			}
-		}
-
-		function disConnect()
-		{
-			mysqli_close($this->con);
+			$this->mainDB = $mainDB;
 		}
 
 		function selectDB()
@@ -284,7 +266,8 @@
 
 		function updateCountrestore()
 		{
-			$con = mysqli_connect('localhost','root','1234',"moodle");
+			mysqli_select_db($this->con,$this->mainDB);			//use main dbname
+			$con = $this->con;
 			if (mysqli_connect_errno())
 			{
     			printf("Connect failed: %s", mysqli_connect_error());
@@ -302,12 +285,12 @@
 					echo "ok";
 				}
 			}
-			mysqli_close($con);
 		}
 
 		function insertSidToUserdb()
 		{
-			$con = mysqli_connect('localhost','root','1234',"moodle");
+			mysqli_select_db($this->con,$this->mainDB);			//use main dbname
+			$con = $this->con;
 			if (mysqli_connect_errno()) 
 			{
     			printf("Connect failed: %s", mysqli_connect_error());
@@ -318,13 +301,15 @@
 			if($result = mysqli_query($con,$insert))
 			{
     			echo "ok";
+			}else{
+				printf("Error: %s", mysqli_error($con));
+				exit();
 			}
-			mysqli_close($con);	
 		}
 
 		function getSidRow()
 		{
-			$con = mysqli_connect('localhost','root','1234',"moodle");
+			$con = $this->con;
 			if (mysqli_connect_errno())
 			{
     			printf("Connect failed: %s", mysqli_connect_error());
@@ -337,7 +322,6 @@
 				$row = mysqli_num_rows($result);
     			mysqli_free_result($result);		// close result set
 			}
-			mysqli_close($con);
 			return $row;
 		}
 	}

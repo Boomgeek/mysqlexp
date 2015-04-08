@@ -4,32 +4,41 @@ if(empty($USER->username)){
 	header( "refresh: 0; url=../../login/index.php" );		//redirect to http://localhost/moodle/login/index.php
 	exit(0);
 }
-//check unit
-$unit = $_REQUEST["unit"];
-if(empty($unit)){
-  echo "Error: unit was empty.";
-  exit(0);
-}
-//check article
-$article = $_REQUEST["article"];
-if(empty($article)){
-  echo "Error: article was empty.";
-  exit(0);
-}
-//check type
-$type = $_REQUEST["type"];
-if(empty($type)){
-  echo "Error: type was empty.";
-  exit(0);
-}
-else
-{
-  if(($type != 1) && ($type != 2))
+  $unit = (int)$_REQUEST["unit"];
+  if(empty($unit))
+  {
+    echo "Error: unit was empty";
+    exit(0);
+  }
+  else if(!is_numeric($unit))
+  {
+    echo "Error: unit is wrong. Unit only is integer.";
+    exit(0);
+  } 
+
+  $article = (int)$_REQUEST["article"];
+  if(empty($article))
+  {
+    echo "Error: article was empty";
+    exit(0);
+  }
+  else if(!is_numeric($article))
+  {
+    echo "Error: article is wrong. Article only is integer.";
+    exit(0);
+  }   
+
+  $type = (int)$_REQUEST["type"];
+  if(empty($type))
+  {
+    echo "Error: type was empty";
+    exit(0);
+  }
+  else if(($type !== 1) && ($type !== 2))
   {
     echo "Error: type is wrong. Only type is 1(while_exp) or 2(after_exp)";
     exit(0);
   }
-}
 ?>
 
 <!DOCTYPE html>
