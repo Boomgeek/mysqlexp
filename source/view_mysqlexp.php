@@ -44,7 +44,7 @@ if(empty($USER->username)){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Mysqlexp Editor v1.0</title>
+	<title>MySQL Experiments</title>
 	<meta charset="utf-8">
 
 	<link rel="shortcut icon" href="./pix/icon.gif"/>
@@ -55,7 +55,7 @@ if(empty($USER->username)){
 <body>
 	<div class="container-fluid">
   		<div class="row">
-  			<div class="col-md-10"><h1>MySQLexp Editor v1.0</h1></div>
+  			<div class="col-md-10"><h1>MySQL Experiments</h1></div>
         <div class="col-md-2 text-right restore-btn"><button type="button" id="restoredb" class="btn btn-danger glyphicon glyphicon-list"> RestoreDB</button></div>
 		</div>
 		<div class="row">
@@ -66,7 +66,7 @@ if(empty($USER->username)){
 		<div class="row">
   			<div class="col-md-6">
   				<div class="panel panel-default">
-  					<div class="panel-heading"><h4>Code</h4></div>
+  					<div class="panel-heading"><h4>Code :</h4></div>
   					<div class="panel-body">
               <div class="text-right">
                 <span class="btn-clipboard" id="copy-button" data-clipboard-target="textareaCode" data-toggle="tooltip" data-placement="left" title="Copy to clipboard">Copy</span>
@@ -77,7 +77,7 @@ if(empty($USER->username)){
  			</div>
  			<div class="col-md-6">
   				<div class="panel panel-default">
-  					<div class="panel-heading"><h4>Result</h4></div>
+  					<div class="panel-heading"><h4>Result :</h4></div>
   					<div id="status"></div>
   					<div id="result"></div>
   				</div>
@@ -86,7 +86,7 @@ if(empty($USER->username)){
 		<div class="row">
   			<div class="col-md-6 ">
   				<button type="button" id="refreshBtn" class="btn btn-primary glyphicon glyphicon-refresh"> Refresh</button>
-          <button type="button" id="submitcode" class="btn btn-success glyphicon glyphicon-send"> Submit</button>
+          <button type="button" id="submitcode" class="btn btn-success glyphicon glyphicon-send"> Run</button>
   			</div>	
 		</div>
 	</div>
